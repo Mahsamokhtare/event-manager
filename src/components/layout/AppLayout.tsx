@@ -5,7 +5,7 @@ import { useNavigation } from "react-router";
 //   return <></>;
 // }
 import { Outlet } from "react-router";
-import { Header } from "../../pages/Header";
+// import { Header } from "../../pages/Header";
 
 const AppLayout = () => {
   const navigation = useNavigation();
@@ -13,7 +13,7 @@ const AppLayout = () => {
   return (
     <div>
       {/* Global layout UI */}
-      <Header></Header>
+      {/* <Header></Header> */}
 
       {/* Optional global loading indicator */}
       {navigation.state === "loading" && <p>Loading...</p>}

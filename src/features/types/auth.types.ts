@@ -1,6 +1,5 @@
 export interface SignupDataRequest {
   email: string;
-  name?: string; // Optional if your form has a name field
   password: string;
 }
 
