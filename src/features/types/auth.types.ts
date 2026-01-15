@@ -24,3 +24,13 @@ export interface LoginResponse {
     email: string;
   };
 }
+
+export interface EventResponse {
+  id: string;
+  title: string;
+  date: string;
+  description: string;
+  latitude: number;
+  longitude: number;
+  location: string;
+}
