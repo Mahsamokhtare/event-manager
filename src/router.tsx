@@ -4,24 +4,29 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { ProtectedRoute } from "./router/ProtectedRoute";
 import Home from "./pages/Home";
+import { PublicLayout } from "./components/layout/PublicLayout";
+import CreateEvent from "./pages/CreateEvent";
 
 export const router = createBrowserRouter([
   {
-    element: <AppLayout></AppLayout>,
+    element: <PublicLayout />,
     children: [
-      { path: "/login", element: <Login></Login> },
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Signup /> },
+    ],
+  },
+  {
+    element: <AppLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+
       {
-        path: "/signup",
-        element: <Signup></Signup>,
-      },
-      {
-        path: "/",
+        path: "/events/new",
         element: (
           <ProtectedRoute>
-            <Home></Home>
+            <CreateEvent />
           </ProtectedRoute>
         ),
-        // element: <Proted></Proted>,
       },
     ],
   },
