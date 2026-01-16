@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { signup } from "../api/auth.api";
 
 export default function Signup() {
@@ -46,9 +46,9 @@ export default function Signup() {
               </button>
               <div className="text-center mt-4 text-sm">
                 <span>Already have an account? </span>
-                <a href="/login" className="text-blue-500 font-semibold hover:underline">
-                  Sign In
-                </a>
+                <Link to="/login" className="text-blue-500 font-semibold hover:underline">
+                  Login
+                </Link>
               </div>
             </div>
           </div>

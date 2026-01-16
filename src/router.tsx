@@ -11,7 +11,6 @@ export const router = createBrowserRouter([
   {
     element: <PublicLayout />,
     children: [
-      { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
     ],
@@ -19,8 +18,10 @@ export const router = createBrowserRouter([
   {
     element: <AppLayout />,
     children: [
+      { path: "/", element: <Home /> },
+
       {
-        path: "/",
+        path: "/events/new",
         element: (
           <ProtectedRoute>
             <CreateEvent />

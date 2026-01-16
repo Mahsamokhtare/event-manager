@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #6366f1; /* indigo-500 */
+  box-shadow: 0 0 0 2px rgba(213, 162, 8, 0.5);
+}
