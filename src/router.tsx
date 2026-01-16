@@ -21,7 +21,6 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/:id", element: <EventDetail /> },
-
       {
         path: "/events/new",
         element: (

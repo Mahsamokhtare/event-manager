@@ -19,14 +19,7 @@ export default function EventCard({ event }: { event: EventResponse }) {
           </div>
           <div className="flex items-center gap-2">
             <MapPin className="w-4 text-blue-700" />
-            <span
-              onClick={() => {
-                window.open(`https://www.google.com/maps?q=${event.latitude},${event.longitude}`, "_blank");
-              }}
-              className="cursor-pointer hover:text-blue-700"
-            >
-              {event.location}
-            </span>
+            <p>{event.location}</p>
           </div>
         </div>
       </div>
