@@ -13,7 +13,7 @@ export const Header = () => {
   console.log("the user is authenticated?", isAuthenticated);
 
   return (
-    <div className="bg-[#f3e3c0] shadow-md">
+    <div className="bg-white shadow-md">
       <div className="flex items-center justify-between px-4 md:px-8 py-4 max-w-7xl mx-auto">
         {/* Logo */}
         <div className="flex items-center gap-2">
