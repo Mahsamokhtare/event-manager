@@ -1,5 +1,5 @@
 import { Calendar, MapPin } from "lucide-react";
-import type { EventResponse } from "../features/types/auth.types";
+import type { EventResponse } from "../features/types/event.types";
 
 export default function EventCard({ event }: { event: EventResponse }) {
   const date = new Date(event.date).toLocaleString("en", {

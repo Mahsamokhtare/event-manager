@@ -1,7 +1,7 @@
 import EventCard from "../components/ui/EventCard";
 import { useEffect, useState } from "react";
-import { fetchEvents } from "../api/auth.api";
-import type { EventResponse } from "../features/types/auth.types";
+import { fetchEvents } from "../api/event.api";
+import type { EventResponse } from "../features/types/event.types";
 
 export default function Home() {
   const [events, setEvents] = useState<EventResponse[]>([]);

@@ -6,10 +6,3 @@ export const login = async (data: LoginDataRequest) => {
   const res = await api.post<LoginResponse>("/auth/login", data);
   return res.data;
 };
-
-export const fetchEvents = async (page = 1, limit = 10) => {
-  const res = await api.get("/events", {
-    params: { page, limit },
-  });
-  return res.data.results;
-};
