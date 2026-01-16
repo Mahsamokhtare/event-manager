@@ -6,6 +6,7 @@ import { ProtectedRoute } from "./router/ProtectedRoute";
 import Home from "./pages/Home";
 import { PublicLayout } from "./components/layout/PublicLayout";
 import CreateEvent from "./pages/CreateEvent";
+import EventDetail from "./pages/EventDetail";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { path: "/", element: <Home /> },
-
+      { path: "/:id", element: <EventDetail /> },
       {
         path: "/events/new",
         element: (
