@@ -6,11 +6,10 @@ import { Link } from "react-router";
 
 export default function Home() {
   const [events, setEvents] = useState<EventResponse[]>([]);
-  useEffect(() => {
-    fetchEvents(1, 20).then(setEvents).catch(console.error);
-  }, []);
 
-  console.log(events);
+  useEffect(() => {
+    fetchEvents(1, 10).then(setEvents).catch(console.error);
+  }, []);
 
   return (
     <>

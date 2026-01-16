@@ -41,7 +41,7 @@ export default function EventDetail() {
           ← Go Back
         </div>
         <div className="flex flex-wrap justify-center items-center">
-          <div className="bg-orange-50 shadow-sm w-140 ">
+          <div className="card bg-orange-50 shadow-sm w-140 ">
             <div className="card-body">
               <h2 className="font-bold text-2xl">{event.title}</h2>
               <h3 className="font-semibold text-lg ">About this event</h3>
