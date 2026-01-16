@@ -36,7 +36,7 @@ export default function EventDetail() {
 
   return (
     <>
-      <div className="p-5">
+      <div className="px-4 md:px-8 py-4 max-w-7xl mx-auto">
         <div onClick={() => navigate(-1)} className="py-5 cursor-pointer hover:scale-101 hover:font-bold duration-300">
           ← Go Back
         </div>
