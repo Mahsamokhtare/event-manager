@@ -1,8 +1,4 @@
-import type {
-  LoginDataRequest,
-  LoginResponse,
-  SignupDataRequest,
-} from "../features/types/auth.types";
+import type { LoginDataRequest, LoginResponse, SignupDataRequest } from "../features/types/auth.types";
 import { api } from "./axios";
 
 export const signup = (data: SignupDataRequest) => api.post("/users", data);
