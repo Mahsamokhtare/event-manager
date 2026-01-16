@@ -9,7 +9,7 @@ export default function Login() {
 
   const handleSubmit = async () => {
     await login({ email, password });
-    navigate("/login");
+    navigate("/");
   };
 
   return (

@@ -6,6 +6,7 @@ export default function EventCard({ event }: { event: EventResponse }) {
     dateStyle: "full",
     timeStyle: "short",
   });
+
   return (
     <>
       <div className="card bg-orange-50 w-100 shadow-sm cursor-pointer hover:scale-101 hover:shadow-xl duration-300">
