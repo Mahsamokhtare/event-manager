@@ -7,7 +7,7 @@ import { Link } from "react-router";
 export default function Home() {
   const [events, setEvents] = useState<EventResponse[]>([]);
   useEffect(() => {
-    fetchEvents(1, 10).then(setEvents).catch(console.error);
+    fetchEvents(1, 20).then(setEvents).catch(console.error);
   }, []);
 
   console.log(events);
@@ -32,7 +32,9 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {events.map((event) => (
-            <EventCard key={event.id} event={event} />
+            <Link to={`/${event.id}`}>
+              <EventCard key={event.id} event={event} />
+            </Link>
           ))}
         </div>
       </div>

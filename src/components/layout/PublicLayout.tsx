@@ -1,9 +1,14 @@
 import { Outlet } from "react-router";
+import { Header } from "./Header";
 
 export const PublicLayout = () => {
   return (
-    <main>
-      <Outlet />
-    </main>
+    <>
+      <Header />
+
+      <main>
+        <Outlet />
+      </main>
+    </>
   );
 };
