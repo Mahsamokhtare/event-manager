@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
@@ -7,15 +7,10 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-  const { isAuthenticated, loginUser } = useAuth();
-
-  if (isAuthenticated) {
-    navigate("/");
-  }
+  const { loginUser } = useAuth()!;
 
   const handleSubmit = async () => {
-    await loginUser({ email, password });
-    console.log(isAuthenticated);
+    await loginUser(email, password);
     navigate("/");
   };
 
@@ -53,7 +48,7 @@ export default function Login() {
               </button>
               <div className="text-center mt-4 text-sm">
                 <span>You don't have an account? </span>
-                <Link to={"/signup"} className="text-blue-500 font-semibold hover:underline">
+                <Link to="/signup" className="text-blue-500 font-semibold hover:underline">
                   Sign up
                 </Link>
               </div>

@@ -9,10 +9,10 @@ export default function EventCard({ event }: { event: EventResponse }) {
 
   return (
     <>
-      <div className="card bg-orange-50 w-90 shadow-sm cursor-pointer hover:scale-101 hover:shadow-xl duration-300">
+      <div className="card bg-orange-50 w-100 shadow-sm cursor-pointer hover:scale-101 hover:shadow-xl duration-00">
         <div className="card-body">
           <h2 className="font-bold text-xl">{event.title}</h2>
-          <p className="line-clamp-1 text-sm text-gray-500">{event.description}</p>
+          <p className="line-clamp-2 text-sm text-gray-500 ">{event.description}</p>
           <div className="flex items-center gap-2">
             <Calendar className="w-4 text-blue-700" />
             <span>{date}</span>
