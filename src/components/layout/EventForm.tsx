@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { createEvents } from "../../api/event.api";
 import type { EventData } from "../../features/types/event.types";
+import { useNavigate } from "react-router";
 type Coordinates = {
   lat: number;
   lng: number;
@@ -17,9 +18,14 @@ export default function EventForm() {
   const [coords, setCoords] = useState<Coordinates | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   async function geocodeLocation(address: string): Promise<Coordinates> {
-    const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`);
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+        address
+      )}`
+    );
 
     const data = await res.json();
 
@@ -52,8 +58,7 @@ export default function EventForm() {
 
       console.log("Submitting event:", eventData);
       await createEvents(eventData);
-
-      alert("Event created successfully!");
+      navigate("/");
     } catch (err) {
       setError((err as Error).message);
     } finally {
@@ -128,7 +133,10 @@ export default function EventForm() {
         )}
 
         <div className="flex justify-between items-center gap-x-4 mt-8">
-          <button type="button" className="w-full cursor-pointer  p-3 py-4 border border-gray-300 rounded-xl">
+          <button
+            type="button"
+            className="w-full cursor-pointer  p-3 py-4 border border-gray-300 rounded-xl"
+          >
             Cancel
           </button>
           <button
