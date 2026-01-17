@@ -47,15 +47,15 @@ export default function Login() {
 
               <button
                 onClick={handleSubmit}
-                className="bg-[#e4bf6f] text-white p-2 mt-3 rounded"
+                className="bg-[#e4bf6f] text-white p-2 mt-3 rounded cursor-pointer"
               >
-                Sign in
+                Log in
               </button>
               <div className="text-center mt-4 text-sm">
                 <span>You don't have an account? </span>
                 <Link
                   to="/signup"
-                  className="text-blue-500 font-semibold hover:underline"
+                  className="text-blue-500 font-semibold hover:underline cursor-pointer"
                 >
                   Sign up
                 </Link>

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 
 export const Header = () => {
@@ -18,7 +18,9 @@ export const Header = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <i className="fa-regular fa-calendar text-[#b87f05] text-xl"></i>
-          <p className="font-bold">EventHub</p>
+          <Link to={"/"}>
+            <p className="font-bold cursor-pointer">EventHub</p>
+          </Link>
         </div>
 
         {/* Conditional rendering based on auth */}
