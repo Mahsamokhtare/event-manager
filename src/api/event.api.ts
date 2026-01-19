@@ -6,7 +6,7 @@ export const createEvents = async (data: EventData) => {
   return res;
 };
 
-export const fetchEvents = async (page = 1, limit = 10) => {
+export const fetchEvents = async (page = 1, limit = 20) => {
   const res = await api.get("/events", {
     params: { page, limit },
   });

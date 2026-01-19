@@ -1,16 +1,34 @@
-import { useNavigate } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import { useAuth } from "../../context/AuthContext";
+type RoutePath = "/" | "/login" | "/signup";
 
 export const Header = () => {
   const authContext = useAuth();
-  const navigate = useNavigate();
+  const location = useLocation();
+
+  const baseBtn =
+    "flex items-center rounded-lg px-4 py-2 cursor-pointer \
+   transition-colors duration-300 ease-in-out";
+
+  const activeBtn = "bg-[#b87f05] text-white";
+  const inactiveBtn = "text-gray-700";
+
+  const isActive = (path: RoutePath): boolean => {
+    const currentPath = location.pathname;
+
+    // Home should activate Signup
+    if (path === "/signup" && currentPath === "/") {
+      return true;
+    }
+
+    return currentPath === path;
+  };
 
   if (!authContext) {
     return null;
   }
 
   const { isAuthenticated, logout } = authContext;
-  console.log("the user is authenticated?", isAuthenticated);
 
   return (
     <div className="bg-white shadow-md">
@@ -18,29 +36,34 @@ export const Header = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <i className="fa-regular fa-calendar text-[#b87f05] text-xl"></i>
-          <p className="font-bold">EventHub</p>
+          <Link to={"/"}>
+            <p className="font-bold cursor-pointer">EventHub</p>
+          </Link>
         </div>
 
         {/* Conditional rendering based on auth */}
         {!isAuthenticated ? (
           <div className="flex items-center gap-x-5">
-            {/* Sign in */}
-            <button
-              className="flex items-center text-gray-700 cursor-pointer"
-              onClick={() => navigate("/login")}
+            <NavLink
+              to="/login"
+              className={`${baseBtn} ${
+                isActive("/login") ? activeBtn : inactiveBtn
+              }`}
             >
               <i className="fa-solid fa-right-to-bracket pr-2"></i>
               <p>Sign in</p>
-            </button>
+            </NavLink>
 
             {/* Sign up */}
-            <button
-              className="flex items-center text-white bg-[#b87f05] rounded-lg px-4 py-2 cursor-pointer"
-              onClick={() => navigate("/signup")}
+            <NavLink
+              to="/signup"
+              className={`${baseBtn} ${
+                isActive("/signup") ? activeBtn : inactiveBtn
+              }`}
             >
               <i className="fa-solid fa-user-plus pr-2"></i>
               <p>Sign Up</p>
-            </button>
+            </NavLink>
           </div>
         ) : (
           <div className="flex items-center gap-x-5">
