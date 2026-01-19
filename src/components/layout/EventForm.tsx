@@ -38,6 +38,9 @@ export default function EventForm() {
       lng: Number(data[0].lon),
     };
   }
+  function handleCancel() {
+    navigate("/");
+  }
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
@@ -134,15 +137,16 @@ export default function EventForm() {
 
         <div className="flex justify-between items-center gap-x-4 mt-8">
           <button
+            onClick={handleCancel}
             type="button"
-            className="w-full cursor-pointer  p-3 py-4 border border-gray-300 rounded-xl"
+            className="w-full cursor-pointer  p-3 py-4 border border-gray-300 rounded-xl hover:shadow-lg"
           >
             Cancel
           </button>
           <button
             disabled={loading}
             type="submit"
-            className="w-full cursor-pointer bg-[#b87f05] p-3 py-4 rounded-xl text-white"
+            className="w-full cursor-pointer bg-[#b87f05] p-3 py-4 rounded-xl text-white hover:shadow-lg"
           >
             {loading ? "Creating..." : "Create Event"}
           </button>

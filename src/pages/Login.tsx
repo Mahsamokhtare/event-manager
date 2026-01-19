@@ -1,17 +1,27 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
+import { handleError } from "../utils/errorHandler";
+import image from "../../src/assets/images/pexels-photo-3752659.jpeg";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
   const { loginUser } = useAuth()!;
 
   const handleSubmit = async () => {
-    await loginUser({ email, password });
-    navigate("/");
+    setError("");
+    try {
+      await loginUser({ email, password });
+      navigate("/");
+    } catch (err) {
+      setEmail("");
+      setPassword("");
+      setError(handleError(err));
+    }
   };
 
   return (
@@ -27,17 +37,25 @@ export default function Login() {
             </header>
 
             <div className="p-4 flex flex-col gap-3">
+              {error && (
+                <div className="flex items-center border border-red-800 px-2 py-2 rounded-lg bg-red-100">
+                  <i className="fa-solid fa-circle-exclamation text-red-800 pr-2"></i>
+                  <p className="text-red-800">{error}</p>
+                </div>
+              )}
               <div className="mb-3">
-                <label className="block pb-1">Email Adress</label>
+                <label className="block pb-1 text-gray-600">Email</label>
                 <input
+                  value={email}
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                   className="bg-gray-200 p-2 rounded w-full "
                 />
               </div>
               <div className="mb-3">
-                <label className="block pb-1">Password</label>
+                <label className="block pb-1 text-gray-600">Password</label>
                 <input
+                  value={password}
                   type="password"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
@@ -66,11 +84,7 @@ export default function Login() {
 
         {/* Right side - Image */}
         <div className="w-1/2">
-          <img
-            src="https://images.pexels.com/photos/3752659/pexels-photo-3752659.jpeg"
-            alt="Event"
-            className="w-full h-full object-cover"
-          />
+          <img src={image} alt="Event" className="w-full h-full object-cover" />
         </div>
       </div>
     </>

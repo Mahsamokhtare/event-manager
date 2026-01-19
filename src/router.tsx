@@ -4,23 +4,30 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { ProtectedRoute } from "./router/ProtectedRoute";
 import Home from "./pages/Home";
-import { PublicLayout } from "./components/layout/PublicLayout";
+// import { PublicLayout } from "./components/layout/PublicLayout";
 import CreateEvent from "./pages/CreateEvent";
 import EventDetail from "./pages/EventDetail";
+import NotFound from "./pages/NotFound";
 
 export const router = createBrowserRouter([
-  {
-    element: <PublicLayout />,
-    children: [
-      { path: "/login", element: <Login /> },
-      { path: "/signup", element: <Signup /> },
-    ],
-  },
+  // {
+  //   element: <PublicLayout />,
+  //   errorElement: <NotFound />,
+
+  //   children: [
+  //     { path: "/login", element: <Login /> },
+  //     { path: "/signup", element: <Signup /> },
+  //   ],
+  // },
   {
     element: <AppLayout />,
+    errorElement: <NotFound />,
+
     children: [
       { path: "/", element: <Home /> },
-      { path: "/:id", element: <EventDetail /> },
+      { path: "/event/:id", element: <EventDetail /> },
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Signup /> },
       {
         path: "/events/new",
         element: (

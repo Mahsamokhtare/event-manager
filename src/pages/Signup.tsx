@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { signup } from "../api/auth.api";
 import { handleError } from "../utils/errorHandler";
+import image from "../../src/assets/images/pexels-photo-3752659.jpeg";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -28,9 +29,13 @@ export default function Signup() {
         <div className="w-1/2 flex items-center justify-center ">
           <div className="rounded-2xl max-w-lg">
             <header className="px-3 py-4 rounded-t-2xl">
-              <h1 className="text-center text-gray-900 text-5xl font-bold">
-                Create your account
+              <h1 className="text-center text-gray-900 text-5xl font-bold pb-6">
+                Create Your Account
               </h1>
+              <p className=" text-gray-400 font-bold pb-2 px-4">
+                Create a free account to manage, edit, and promote your events
+                anytime.
+              </p>
             </header>
 
             <div className="p-4 flex flex-col gap-3">
@@ -41,7 +46,7 @@ export default function Signup() {
                 </div>
               )}
               <div className="mb-3">
-                <label className="block pb-1">Email Adress</label>
+                <label className="block pb-1 text-gray-600">Email</label>
                 <input
                   value={email}
                   placeholder="Email"
@@ -53,7 +58,7 @@ export default function Signup() {
                 />
               </div>
               <div className="mb-3">
-                <label className="block pb-1">Password</label>
+                <label className="block pb-1 text-gray-600">Password</label>
                 <input
                   type="password"
                   value={password}
@@ -87,11 +92,7 @@ export default function Signup() {
 
         {/* Right side - Image */}
         <div className="w-1/2">
-          <img
-            src="https://images.pexels.com/photos/3752659/pexels-photo-3752659.jpeg"
-            alt="Event"
-            className="w-full h-full object-cover"
-          />
+          <img src={image} alt="Event" className="w-full h-full object-cover" />
         </div>
       </div>
     </>
