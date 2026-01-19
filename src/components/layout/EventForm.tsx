@@ -23,8 +23,8 @@ export default function EventForm() {
   async function geocodeLocation(address: string): Promise<Coordinates> {
     const res = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-        address
-      )}`
+        address,
+      )}`,
     );
 
     const data = await res.json();
@@ -32,6 +32,7 @@ export default function EventForm() {
     if (!data || data.length === 0) {
       throw new Error("Location not found");
     }
+    console.log(coords);
 
     return {
       lat: Number(data[0].lat),
