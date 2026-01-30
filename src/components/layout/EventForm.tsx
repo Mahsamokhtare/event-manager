@@ -14,7 +14,6 @@ export default function EventForm() {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState<Date>(new Date());
   const [location, setLocation] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [coords, setCoords] = useState<Coordinates | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

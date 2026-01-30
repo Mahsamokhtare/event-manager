@@ -1,9 +1,18 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 import { login } from "../api/auth.api";
+export type User = {
+  id: number;
+  email: string;
+};
 interface AuthContextType {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  user: any;
+  user: User | null;
   isAuthenticated: boolean;
   loginUser: (data: { email: string; password: string }) => Promise<void>;
   logout: () => void;
@@ -13,11 +22,12 @@ interface Props {
   children: ReactNode;
 }
 // eslint-disable-next-line react-refresh/only-export-components
-export const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined,
+);
 
 export function AuthProvider({ children }: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -40,7 +50,11 @@ export function AuthProvider({ children }: Props) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, loginUser, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated: !!user, loginUser, logout }}
+    >
+      {children}
+    </AuthContext.Provider>
   );
 }
 
