@@ -1,18 +1,10 @@
-export interface EventData {
-  title: string;
-  description: string;
-  date: string;
-  location: string;
-  latitude: number;
-  longitude: number;
-}
+import { z } from "zod/v4";
 
-export interface EventResponse {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  location: string;
-  latitude: number;
-  longitude: number;
-}
+import { EventSchema } from "./event.schema";
+
+export type EventData = z.infer<typeof EventSchema>;
+export const EventResponseSchema = EventSchema.extend({
+  id: z.string(),
+});
+
+export type EventResponse = z.infer<typeof EventResponseSchema>;

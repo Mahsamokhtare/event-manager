@@ -1,26 +1,6 @@
-export interface SignupDataRequest {
-  email: string;
-  password: string;
-}
+import { z } from "zod";
+import type { AuthCredentialsSchema, LoginResponseSchema } from "./auth.schema";
 
-export interface SignUpResponse {
-  id: number;
-  name?: string;
-  email: string;
-  isActive: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface LoginDataRequest {
-  email: string;
-  password: string;
-}
-
-export interface LoginResponse {
-  token: string;
-  user: {
-    id: number;
-    email: string;
-  };
-}
+export type SignupDataRequest = z.infer<typeof AuthCredentialsSchema>;
+export type LoginDataRequest = z.infer<typeof AuthCredentialsSchema>;
+export type LoginResponse = z.infer<typeof LoginResponseSchema>;
